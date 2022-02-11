@@ -8,7 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <div class="card-container">
+        <div class="input-container">
+            <form action="" method="post">
+                <label for="title">Title:</label>
+                <input id="title" name="title" type="text">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Pages:</label>
+                <input type="text" id="pages" name="pages">
+                <label for="read">Read</label>
+                <input type="checkbox" name="read" id="read">
+                <button id="submit-button" type="button">Submit</button>
+            </form>
+        </div>
+        <div id="card-container" class="card-container">
             <p>DUMMY CONTENT - this will be replaced with a grid of cards with book content on each one.</p>
             <p>each card will have a toggle that can toggle the quality of "read"</p>
         </div>
