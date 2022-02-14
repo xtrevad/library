@@ -1,4 +1,10 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
 
+.container {
+    background-color: #ccc;
+}
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -66,6 +72,11 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(111, 172, 201);
+    border-radius: 1.5ch;
+    width: max-content;
+    margin: auto;
+    padding: 2ch;
 }
 
 .input-container form {
@@ -106,8 +117,8 @@ input:checked + .slider:before {
 }
 
 .metrics-container {
-    display: flex;
-    justify-content: center;
+    width: max-content;
+    margin: auto;
 }
 
 .metrics {
@@ -115,24 +126,34 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
+    background-color: #ccc;
+    /* border: 1px solid black; */
     width: 30ch;
+    height: 8ch;
+}
+
+.metrics p {
+    padding: 0;
+    margin: 0.5ch;
 }
 
 .card-container {
+    margin: 5ch;
     display: grid;
     grid-template-rows: repeat(2, 200px);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1ch;
+    gap: 2ch;
 }
 
-.card {s
-    border: black 1px solid;
+.card {
+    /* border: black 1px solid; */
+    box-shadow: 0 0 10px 1px #6a6b68;
     border-radius: 5px;
-    background-color: #a7a9a6;
+    background-color: #4e91b8;
     color: black;
     font-family: 'Courier New', Courier, monospace;
     position: relative;
+    border-left: #1e71a8 10px solid;
 }
 
 .card :nth-child(1),
@@ -142,6 +163,7 @@ input:checked + .slider:before {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
 }
 
 .card :nth-child(4),
@@ -155,4 +177,8 @@ input:checked + .slider:before {
     position: absolute;
     bottom: 1ch;
     right: 1ch;
+}
+
+.card button {
+    font-family: inherit;
 }

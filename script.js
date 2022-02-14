@@ -114,6 +114,13 @@ let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Read');
 myLibrary.push(theHobbit);
 addBookToLibrary();
 
+
+// STATE OF PLAY FEB 14:
+// All we need is custom validity checking to prevent
+// empty books from being added to the library. Thats it!
+// And maybe make it prettier.
+
+
 //                  SUMMARY: 
 //                  Take user input for fields "title, author, pages, read"
 //                  and, upon the click of a button, display that information
