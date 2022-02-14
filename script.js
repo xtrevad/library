@@ -38,7 +38,7 @@ Book.prototype.toggleReadStatus = function() {                                  
         myLibrary[`${id - 1}`].read = 'Read';
         thisCard.querySelector(" :nth-child(4)").textContent = "Read";
     };
-    // alert(this.author)
+    metrics();
 }
 
 Book.prototype.removeFromLibrary = function() {
@@ -46,6 +46,7 @@ Book.prototype.removeFromLibrary = function() {
     const thisCard = document.querySelector(`[data-index-number="${id}"]`);
     thisCard.remove();
     myLibrary.splice(id - 1, 1);
+    metrics();
 }
 
 function addBookToLibrary() {
@@ -73,12 +74,14 @@ function addBookToLibrary() {
     };
     const slider = document.createElement('span');
     slider.classList.add('slider', 'round');
+    const span = document.createElement('span');
+    checkbox.appendChild(span);
     toggle.appendChild(checkbox);
     toggle.appendChild(slider);
     card.appendChild(toggle);
     // Adds "remove from library" button
     const remove = document.createElement('button');
-    remove.textContent = ('Remove from library');
+    remove.textContent = ('Remove');
     remove.classList.add('removeBtn');
     remove.id = (myLibrary.length);
     remove.addEventListener('click', book.removeFromLibrary);
@@ -87,6 +90,24 @@ function addBookToLibrary() {
     const container = document.getElementById("card-container");
     container.appendChild(card);
     card.dataset.indexNumber = (myLibrary.length);
+    metrics();
+};
+
+function metrics() {
+    const booksRead = document.getElementById('books-read');
+    const pagesRead = document.getElementById('pages-read');
+    const readNumber = myLibrary.filter(book => {
+        return book.read === 'Read';
+    });
+    booksRead.textContent = "Books read: " + readNumber.length;
+    let sum = 0;
+    for (let i = 0; i < readNumber.length; i++) {
+        const book = readNumber[i];
+        let pages = +(book.pages.slice(0, -6));
+        sum += pages;
+    };
+    pagesRead.textContent = "Total pages read: " + sum;
+
 }
 
 let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Read');
@@ -100,8 +121,6 @@ addBookToLibrary();
 //                  page.
 
 //                  NICE STUFF TO HAVE
-//                  * Metrics of how many pages altogether you have read
-//                  * How many books you have read in total
 //                  * An animation when a new book is added. Perhaps the "display" function stores its
 //                    length in a variable, and if that variable is one more than it used to be, then the
 //                    last item in they array smoothly inflates or slides into place at the end of the grid

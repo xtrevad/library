@@ -1,10 +1,3 @@
-.card {
-    border: black 1px solid;
-    border-radius: 5px;
-    background-color: #a7a9a6;
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-}
 
 /* The switch - the box around the slider */
 .switch {
@@ -15,14 +8,14 @@
   }
   
   /* Hide default HTML checkbox */
-  .switch input {
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
+}
   
   /* The slider */
-  .slider {
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -32,9 +25,9 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
   
-  .slider:before {
+.slider:before {
     position: absolute;
     content: "";
     height: 1rem;
@@ -44,27 +37,122 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
   
-  input:checked + .slider {
+input:checked + .slider {
     background-color: #2196F3;
-  }
+}
   
-  input:focus + .slider {
+input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
-  }
+}
   
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(1rem);
     -ms-transform: translateX(1rem);
     transform: translateX(1rem);
-  }
+}
   
   /* Rounded sliders */
-  .slider.round {
+.slider.round {
     border-radius: 1rem;
-  }
+}
   
-  .slider.round:before {
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    gap: 1ch 0ch;
+}
+
+.input-container form div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pages {
+    width: 50px;
+}
+
+.input-container form div input {
+    width: 200px;
+}
+
+.input-container button {
+    padding: 1ch 4ch;
+    width: 150px;
+    align-self: center;
+}
+
+#two-labels {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    width: auto;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.metrics-container {
+    display: flex;
+    justify-content: center;
+}
+
+.metrics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 30ch;
+}
+
+.card-container {
+    display: grid;
+    grid-template-rows: repeat(2, 200px);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1ch;
+}
+
+.card {s
+    border: black 1px solid;
+    border-radius: 5px;
+    background-color: #a7a9a6;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+
+.card :nth-child(1),
+.card :nth-child(2),
+.card :nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card :nth-child(4),
+.card :nth-child(5) {
+    position: absolute;
+    bottom: 1ch;
+    left: 1ch;
+}
+
+.card :nth-child(6) {
+    position: absolute;
+    bottom: 1ch;
+    right: 1ch;
+}

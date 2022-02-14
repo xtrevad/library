@@ -11,20 +11,35 @@
     <div class="container">
         <div class="input-container">
             <form action="" method="post">
-                <label for="title">Title:</label>
-                <input id="title" name="title" type="text">
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
-                <label for="pages">Pages:</label>
-                <input type="text" id="pages" name="pages">
-                <label for="read">Read</label>
-                <input type="checkbox" name="read" id="read">
+                <div>
+                    <label for="title">Title:</label>
+                    <input id="title" name="title" type="text">
+                </div>
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+                </div>
+                <div id="two-labels">
+                    <div>
+                        <label for="pages">Pages:</label>
+                        <input type="tel" id="pages" name="pages">
+                    </div>
+                    <div>
+                        <label for="read">Read:</label>
+                        <label for="read" class="switch">
+                        <input type="checkbox" name="read" id="read">
+                        <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
                 <button id="submit-button" type="button">Submit</button>
             </form>
         </div>
-        <div class="metrics">
-            <p>Books read: </p>
-            <p>Total pages read: </p>
+        <div class="metrics-container">
+            <div class="metrics">
+                <p id="books-read">Books read: </p>
+                <p id="pages-read">Total pages read: </p>
+            </div>
         </div>
         <div id="card-container" class="card-container">
         </div>
