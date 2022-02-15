@@ -9,40 +9,42 @@
 </head>
 <body>
     <div class="container">
-        <div class="input-container">
-            <form action="" method="post">
-                <div>
-                    <label for="title">Title:</label>
-                    <input id="title" name="title" type="text" required>
-                </div>
-                <div>
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author" required>
-                </div>
-                <div id="two-labels">
+        <div class="container-overlay">
+            <div class="input-container">
+                <form action="" method="post">
                     <div>
-                        <label for="pages">Pages:</label>
-                        <input type="tel" id="pages" name="pages" required>
+                        <label id="title-label" for="title">Title:</label>
+                        <input id="title" name="title" type="text" required>
                     </div>
                     <div>
-                        <label for="read">Read:</label>
-                        <label for="read" class="switch">
-                        <input type="checkbox" name="read" id="read">
-                        <span class="slider round"></span>
-                        </label>
+                        <label id="author-label" for="author">Author:</label>
+                        <input type="text" id="author" name="author" required>
                     </div>
-                </div>
-                <button id="submit-button" type="button">Submit</button>
-            </form>
-        </div>
-        <div class="metrics-container">
-            <div class="metrics">
-                <p id="books-read">Books read: </p>
-                <p id="pages-read">Total pages read: </p>
+                    <div id="two-labels">
+                        <div>
+                            <label id="pages-label" for="pages">Pages:</label>
+                            <input type="tel" id="pages" name="pages" required>
+                        </div>
+                        <div>
+                            <label for="read">Read:</label>
+                            <label for="read" class="switch">
+                            <input type="checkbox" name="read" id="read">
+                            <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="submit-button" type="button">Submit</button>
+                </form>
             </div>
-        </div>
-        <div id="card-container" class="card-container">
-        </div>
+            <div class="metrics-container">
+                <div class="metrics">
+                    <p id="books-read">Books read: </p>
+                    <p id="pages-read">Total pages read: </p>
+                </div>
+            </div>
+            <div id="card-container" class="card-container">
+            </div>
+    </div>
     </div>
 </body>
 <script src="./script.js"></script>

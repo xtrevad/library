@@ -3,8 +3,15 @@
 }
 
 .container {
-    background-color: #ccc;
+    background-image: url(assets/background.jpg);
+    background-size: contain;
+    background-attachment: fixed;
 }
+
+.container-overlay {
+    background-color: rgba(0, 0, 0, 0.651);
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -72,7 +79,11 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(111, 172, 201);
+    position: relative;
+    top: 8ch;
+    /* background-color: rgb(111, 172, 201); */
+    background-color: #38130cce;
+    color: #bb6b4e;
     border-radius: 1.5ch;
     width: max-content;
     margin: auto;
@@ -91,6 +102,7 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 1ch;
 }
 
 #pages {
@@ -118,7 +130,7 @@ input:checked + .slider:before {
 
 .metrics-container {
     width: max-content;
-    margin: auto;
+    margin: 12ch auto 0;
 }
 
 .metrics {
@@ -126,7 +138,10 @@ input:checked + .slider:before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ccc;
+    background-color: rgba(0, 0, 0, 0.804);
+    color: rgb(230, 230, 230);
+    border-radius: 4ch;
+    margin-top: 4ch;
     /* border: 1px solid black; */
     width: 30ch;
     height: 8ch;
@@ -141,19 +156,22 @@ input:checked + .slider:before {
     margin: 5ch;
     display: grid;
     grid-template-rows: repeat(2, 200px);
+    grid-auto-rows: 200px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2ch;
 }
 
 .card {
     /* border: black 1px solid; */
-    box-shadow: 0 0 10px 1px #6a6b68;
+    box-shadow: 0 0 10px 1px #000000;
     border-radius: 5px;
-    background-color: #4e91b8;
-    color: black;
+    /* background-color: #4e91b8; */
+    /* background-color: rgb(111, 172, 201); */
+    background-color: #4f0804;
+    color: #bb6b4e;
     font-family: 'Courier New', Courier, monospace;
     position: relative;
-    border-left: #1e71a8 10px solid;
+    border-left: #1c0000 10px solid;
 }
 
 .card :nth-child(1),
@@ -181,4 +199,38 @@ input:checked + .slider:before {
 
 .card button {
     font-family: inherit;
+    border: none;
+    background-color: #1c0000;
+    color: #bb6b4e;
+    padding: 0.5ch 2ch;
+    border-radius: 1ch;
+}
+
+.error {
+    border: 1px solid red;
+    position: relative
+}
+
+#title-label,
+#author-label,
+#pages-label {
+    position: relative;
+}
+
+.error-msg::after {
+    width: max-content;
+    content: "Cannot be left blank";
+    color: red;
+    position: absolute;
+    top: 4ch;
+    right: -7ch;
+}
+
+.num-msg::after {
+    width: max-content;
+    content: "Must be a number";
+    color: red;
+    position: absolute;
+    top: 4ch;
+    right: -7ch;
 }

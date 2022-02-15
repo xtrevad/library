@@ -4,7 +4,74 @@ const pagesInput = document.getElementById('pages');
 const readInput = document.getElementById('read');
 
 const submitButton = document.getElementById('submit-button');
-submitButton.addEventListener('click', submit);
+submitButton.addEventListener('click', isValidCheck);
+
+const randomColor = Math.floor(Math.random()*16777215).toString(16);
+// document.getElementsByClassName('card').style.backgroundColor = '#' + randomColor;
+// submitButton.addEventListener('click', submit);
+
+function isValidCheck() {
+    checkNotEmpty();
+    checkIsNumber();
+    if (valid === 'yyyy') {
+        submit();
+    } else return;
+};
+
+const reg = /^[0-9]*$/;
+
+
+let valid = '';
+function checkNotEmpty() {
+    valid = '';
+    if (titleInput.value === '') {
+        titleInput.setCustomValidity('Cannot be left blank');
+        titleInput.classList.add('error');
+        document.getElementById('title-label').classList.add('error-msg');
+        valid += 'n'
+    } else {
+        titleInput.setCustomValidity('');
+        titleInput.classList.remove('error');
+        document.getElementById('title-label').classList.remove('error-msg');
+        valid += 'y';
+    };
+    if (authorInput.value == '') {
+        authorInput.setCustomValidity('Cannot be left blank');
+        authorInput.classList.add('error');
+        document.getElementById('author-label').classList.add('error-msg');
+        valid += 'n'
+    } else {
+        authorInput.setCustomValidity('');
+        authorInput.classList.remove('error');
+        document.getElementById('author-label').classList.remove('error-msg');
+        valid += 'y'
+    };
+    if (pagesInput.value == '') {
+        pagesInput.setCustomValidity('Cannot be left blank');
+        pagesInput.classList.add('error');
+        document.getElementById('pages-label').classList.add('error-msg');
+        valid += 'n'
+    } else {
+        pagesInput.setCustomValidity('');
+        pagesInput.classList.remove('error');
+        document.getElementById('pages-label').classList.remove('error-msg');
+        valid += 'y'
+    };
+};
+
+function checkIsNumber() {
+    if (!(reg.test(+(pagesInput.value)))) {
+        pagesInput.setCustomValidity('Must be a number');
+        pagesInput.classList.add('error');
+        document.getElementById('pages-label').classList.add('num-msg');
+        valid += 'n'
+    } else {
+        pagesInput.setCustomValidity('');
+        pagesInput.classList.remove('error');
+        document.getElementById('pages-label').classList.remove('num-msg');
+        valid += 'y'
+    };
+};
 
 let myLibrary = [];
 
@@ -45,13 +112,14 @@ Book.prototype.removeFromLibrary = function() {
     const id = (this.id);
     const thisCard = document.querySelector(`[data-index-number="${id}"]`);
     thisCard.remove();
-    myLibrary.splice(id - 1, 1);
+    // myLibrary.splice(id - 1, 1);
+    delete myLibrary[id-1];   // NOTE: "delete" causes undefined holes in myLibrary array, but it is currently the best way to maintain linkage of DOM element index ID and array placement values.
     metrics();
 }
 
 function addBookToLibrary() {
     const book = myLibrary[myLibrary.length - 1];    //Selects the last book added to the library
-    const card = document.createElement('div');
+    let card = document.createElement('div');
     card.classList.add('card');
     for (prop in book) {    
         if (book.hasOwnProperty(prop)) {                       // creates a list of text nodes for each property of the book
@@ -88,6 +156,8 @@ function addBookToLibrary() {
     card.appendChild(remove);
     // Adds finished card to the library display
     const container = document.getElementById("card-container");
+    // const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    // card.style.backgroundColor = '#' + randomColor;
     container.appendChild(card);
     card.dataset.indexNumber = (myLibrary.length);
     metrics();
@@ -112,6 +182,10 @@ function metrics() {
 
 let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'Read');
 myLibrary.push(theHobbit);
+addBookToLibrary();
+
+let warAndPeace = new Book('War and Peace', 'Leo Tolstoy', '1225 pages', 'Not yet read')
+myLibrary.push(warAndPeace);
 addBookToLibrary();
 
 
